@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="form-group mt-5 pr-3 pl-3">
+        <div class="row mx-auto">
+            <div class="col-lg-11">
+                <input type="text" class="form-control pl-2" aria-describedby="helpId" placeholder="Nhập tên công việc" [(ngModel)]="work.ten">
+            </div>
+            <div class="col-lg-1">
+                <button type="button" class="btn btn-primary" btn-lg btn-block (click)="addWork()">Add</button>
+            </div>
+        </div>
+    </div>
+    <div class="list">
+        <h3 class="text-center">Danh sách công việc</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th width="50px">STT</th>
+                    <th width="50px"></th>
+                    <th>Name</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of arrWorkList, let i = index" [ngClass]="{'bg-success': item.status}">
+                    <td width="50px">
+                        {{i}}
+                    </td>
+                    <td scope="row" width="50px">
+                        <input type="checkbox" [checked]="item.status" [(ngModel)]="item.status">
+                    </td>
+                    <td>
+                        {{item.ten}}
+                    </td>
+                    <td>
+                        <button class="bg-danger text-light editItem" (click)="delete(i)">Xóa</button>
+                        <button class="bg-info text-light editItem" (click)="update(i)">Update</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
